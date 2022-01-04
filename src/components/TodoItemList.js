@@ -6,7 +6,7 @@ class TodoItemList extends Component {
         const {todos, myToggle, myRemove} = this.props;
         const todo_list = todos.map(({id,text,checked}) => 
             (<TodoItem key={id} id={id} text={text} checked={checked} 
-                myToggole={myToggle} myRemove={myRemove} />));
+                myToggle={myToggle} myRemove={myRemove} />));
 
         return (
             <div>

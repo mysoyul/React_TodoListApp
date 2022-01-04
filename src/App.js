@@ -46,12 +46,18 @@ class App extends Component {
     this.setState({
       todos: todos.filter(todo => todo.id !== id)
     });
-  }
+  };
 
+  handleToggle = (id) => {
+    const { todos } = this.state;
+    this.setState({
+      todos: todos.map(todo => todo.id === id ? {...todo, checked: !todo.checked} : todo)
+    });
+  };
 
   render() {
     const { todo, todos } = this.state;
-    const { handleChange, handleCreate, handleKeyPress, handleRemove } = this;
+    const { handleChange, handleCreate, handleKeyPress, handleRemove, handleToggle } = this;
 
     return (
       <div>
@@ -59,7 +65,7 @@ class App extends Component {
           myChange={handleChange}
           myCreate={handleCreate}
           myKeyPress={handleKeyPress} />}>
-          <TodoItemList todos={todos} myRemove={handleRemove} />
+          <TodoItemList todos={todos} myRemove={handleRemove} myToggle={handleToggle} />
         </TodoListTemplate>
       </div>
     );

@@ -42,7 +42,7 @@ class App extends Component {
   }
 
   render() {
-    const { todo } = this.state;
+    const { todo, todos } = this.state;
     const { handleChange, handleCreate, handleKeyPress } = this;
 
     return (
@@ -51,7 +51,7 @@ class App extends Component {
                                   myChange={handleChange} 
                                   myCreate={handleCreate}
                                   myKeyPress={handleKeyPress} />}>
-          <TodoItemList />
+          <TodoItemList todos={todos}/>
         </TodoListTemplate>
       </div>
     );

@@ -10,12 +10,12 @@ class TodoItemList extends Component {
            현재 todos와 다음에 그려질 todos를 비교해서 같으면 렌더링을 생략할 수 있다.
     */
     shouldComponentUpdate(nextProps, nextState) {
-        return this.props.todos !== nextProps.todos;
+        return this.props.all_todos !== nextProps.all_todos;
     }
 
     render() {
-        const { todos, myToggle, myRemove } = this.props;
-        const todo_list = todos.map(({ id, text, checked }) =>
+        const { all_todos, myToggle, myRemove } = this.props;
+        const todo_list = all_todos.map(({ id, text, checked }) =>
         (<TodoItem key={id} id={id} text={text} checked={checked}
             myToggle={myToggle} myRemove={myRemove} />));
 
@@ -34,7 +34,7 @@ class TodoItemList extends Component {
 }
 
 export default connect(
-    state => ({todos:state.todos}),
+    state => ({all_todos:state.todos}),
     {fetchTodoList:fetchAllTodos}
     )
 (TodoItemList);

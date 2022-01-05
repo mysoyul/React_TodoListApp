@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TodoItem from './TodoItem';
-
+import { connect } from 'react-redux';
+import { fetchAllTodos } from '../actions';
 class TodoItemList extends Component {
     /*
         shouldComponentUpdate() 메서드가 
@@ -24,6 +25,16 @@ class TodoItemList extends Component {
             </div>
         );
     }
+    //render() 뒤에 호출되는 Lifecycle method
+    componentDidMount() {
+        //props로 받은 Action 생성함수(todo 목록)를 호출
+        this.props.fetchTodoList();
+    }
+
 }
 
-export default TodoItemList;
+export default connect(
+    state => ({todos:state.todos}),
+    {fetchTodoList:fetchAllTodos}
+    )
+(TodoItemList);

@@ -36,7 +36,6 @@ class App extends Component {
   };
 
   render() {
-    const { todo } = this.state;
     const { handleRemove, handleToggle } = this;
 
     return (

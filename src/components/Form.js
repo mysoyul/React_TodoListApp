@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './Form.css';
+import { connect } from 'react-redux';
+import { addTodo } from '../actions';
 
 class Form extends Component {
     //상태변수 정의
@@ -13,17 +15,16 @@ class Form extends Component {
         });
     }
     handleCreate = () => {
-        const { todo, todos } = this.state;
+        const { todo } = this.state;
         const todoObj = {
-            id: this.id++,
             text: todo,
             checked: false
         };
+        //Action 생성함수(Todo 등록) 호출
+        this.props.addTodo(todoObj);
 
         this.setState({
-            todo: '', // todo 초기화
-            // ...(spread operator)을 사용하여 todo객체를 배열에 추가
-            todos: [...todos, todoObj]
+            todo: '' // todo 초기화
         });
     }
     handleKeyPress = (e) => {
@@ -48,4 +49,4 @@ class Form extends Component {
     }
 }
 
-export default Form;
+export default connect(null, {addTodo})(Form);

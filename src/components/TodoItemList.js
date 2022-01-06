@@ -14,10 +14,10 @@ class TodoItemList extends Component {
     }
 
     render() {
-        const { all_todos, myToggle, myRemove } = this.props;
+        const { all_todos, myToggle } = this.props;
         const todo_list = all_todos.map(({ id, text, checked }) =>
         (<TodoItem key={id} id={id} text={text} checked={checked}
-            myToggle={myToggle} myRemove={myRemove} />));
+            myToggle={myToggle} />));
 
         return (
             <div>

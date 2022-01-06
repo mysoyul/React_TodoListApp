@@ -3,6 +3,7 @@ import axios from 'axios';
 //Action Type변수 정의
 export const FETCH_TODOS = 'FETCH_TODOS';
 export const ADD_TODO = "ADD_TODO";
+export const REMOVE_TODO = "REMOVE_TODO";
 
 const apiUrl = 'http://localhost:4500/api/todos';
 
@@ -40,3 +41,20 @@ export const addTodo = (todo) => {
             })
     }
 };
+//3.Todo 삭제
+export const removeTodo = (id) => {
+    return (dispatch) => {
+        axios.delete(`${apiUrl}/${id}`)
+            .then(res => {
+                dispatch({
+                    type: REMOVE_TODO,
+                    payload: res.data
+                })
+            })
+            .catch(error => {
+                console.log(error);
+                throw (error);
+            })
+    }
+}
+

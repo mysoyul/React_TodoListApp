@@ -21,13 +21,6 @@ class App extends Component {
     // ]
   }
 
-  handleRemove = (id) => {
-    const { todos } = this.state;
-    this.setState({
-      todos: todos.filter(todo => todo.id !== id)
-    });
-  };
-
   handleToggle = (id) => {
     const { todos } = this.state;
     this.setState({
@@ -36,12 +29,12 @@ class App extends Component {
   };
 
   render() {
-    const { handleRemove, handleToggle } = this;
+    const { handleToggle } = this;
 
     return (
       <div>
         <TodoListTemplate form={<Form />}>
-          <TodoItemList myRemove={handleRemove} myToggle={handleToggle} />
+          <TodoItemList myToggle={handleToggle} />
         </TodoListTemplate>
       </div>
     );

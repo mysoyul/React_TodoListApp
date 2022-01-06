@@ -14,10 +14,9 @@ class TodoItemList extends Component {
     }
 
     render() {
-        const { all_todos, myToggle } = this.props;
+        const { all_todos } = this.props;
         const todo_list = all_todos.map(({ id, text, checked }) =>
-        (<TodoItem key={id} id={id} text={text} checked={checked}
-            myToggle={myToggle} />));
+        (<TodoItem key={id} id={id} text={text} checked={checked} />));
 
         return (
             <div>

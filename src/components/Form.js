@@ -21,7 +21,7 @@ class Form extends Component {
             checked: false
         };
         //Action 생성함수(Todo 등록) 호출
-        this.props.addTodo(todoObj);
+        this.props.registerTodo(todoObj);
 
         this.setState({
             todo: '' // todo 초기화
@@ -49,4 +49,4 @@ class Form extends Component {
     }
 }
 
-export default connect(null, {addTodo})(Form);
+export default connect(null, {registerTodo:addTodo})(Form);
